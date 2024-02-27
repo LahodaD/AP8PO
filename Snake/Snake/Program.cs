@@ -166,15 +166,15 @@ namespace SnakeGame
                         {
                             Movement = Direction.Up;
                         }
-                        if (key.Key.Equals(ConsoleKey.DownArrow) && Movement != Direction.Up)
+                        else if (key.Key.Equals(ConsoleKey.DownArrow) && Movement != Direction.Up)
                         {
                             Movement = Direction.Down;
                         }
-                        if (key.Key.Equals(ConsoleKey.LeftArrow) && Movement != Direction.Right)
+                        else if (key.Key.Equals(ConsoleKey.LeftArrow) && Movement != Direction.Right)
                         {
                             Movement = Direction.Left;
                         }
-                        if (key.Key.Equals(ConsoleKey.RightArrow) && Movement != Direction.Left)
+                        else if (key.Key.Equals(ConsoleKey.RightArrow) && Movement != Direction.Left)
                         {
                             Movement = Direction.Right;
                         }
