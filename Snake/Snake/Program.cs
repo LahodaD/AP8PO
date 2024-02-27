@@ -71,7 +71,7 @@ namespace SnakeGame
             Clear();
             DrawBorder();
 
-            ForegroundColor = Head.ScreenColor;
+            ForegroundColor = Head.BackgroundColor;
             SetCursorPosition(Head.XPos, Head.YPos);
             Write("■");
 
@@ -216,7 +216,7 @@ namespace SnakeGame
         }
 
         private void GameOverInfo()
-        {
+        {            
             Clear();
             SetCursorPosition(WindowWidth / 5, WindowHeight / 2);
             WriteLine("Game over, Score: " + Score);
@@ -229,13 +229,13 @@ namespace SnakeGame
     {
         public int XPos { get; set; }
         public int YPos { get; set; }
-        public ConsoleColor ScreenColor { get; set; }
+        public ConsoleColor BackgroundColor { get; set; }
 
-        public Pixel(int xPos, int yPos, ConsoleColor color)
+        public Pixel(int xPos, int yPos, ConsoleColor backgroundColor)
         {
             XPos = xPos;
             YPos = yPos;
-            ScreenColor = color;
+            BackgroundColor = backgroundColor;
         }
     }
 
