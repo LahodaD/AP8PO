@@ -20,8 +20,8 @@ namespace SnakeGame
         int BerryX { get; set; }
         int BerryY { get; set; }
 
-        DateTime Time { get; set; }
-        DateTime Time2 { get; set; }
+        DateTime TimeStart { get; set; }
+        DateTime TimeEnd { get; set; }
 
         bool ButtonPressed { get; set; }
 
@@ -38,8 +38,8 @@ namespace SnakeGame
             YPosBody = new List<int>();
             BerryX = RandomNumber.Next(0, WindowWidth);
             BerryY = RandomNumber.Next(0, WindowHeight);
-            Time = DateTime.Now;
-            Time2 = DateTime.Now;
+            TimeStart = DateTime.Now;
+            TimeEnd = DateTime.Now;
         }
 
 
@@ -129,6 +129,17 @@ namespace SnakeGame
                 Score++;
                 BerryX = new Random().Next(1, WindowWidth - 2);
                 BerryY = new Random().Next(1, WindowHeight - 2);
+                while(true)
+                {
+                    if (XPosBody.Contains(BerryX) || YPosBody.Contains(BerryY))
+                    {
+                        BerryX = new Random().Next(1, WindowWidth - 2);
+                        BerryY = new Random().Next(1, WindowHeight - 2);
+                    } else
+                    {
+                        break;
+                    }
+                }
             }
         }
 
@@ -146,13 +157,13 @@ namespace SnakeGame
 
         public void HandleInput()
         {
-            Time = DateTime.Now;
+            TimeStart = DateTime.Now;
             ButtonPressed = false;
 
             while (true)
             {
-                Time2 = DateTime.Now;
-                if (Time2.Subtract(Time).TotalMilliseconds > 500)
+                TimeEnd = DateTime.Now;
+                if (TimeEnd.Subtract(TimeStart).TotalMilliseconds > 500)
                 {
                     break;
                 }
